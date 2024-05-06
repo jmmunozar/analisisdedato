@@ -2,3 +2,52 @@
 import pandas as pd
 dataset = pd.read_csv('Mall_Customers.csv')
 dataset
+
+/*** modelo de Kmeans ***/
+
+# importacion de libreria plt
+import numpy as np
+import matplotlib.pyplot as plt
+
+ importamos Kmeans
+from sklearn.cluster import KMeans
+
+# Creaciòn de los Kmeans objetos
+kmeans = KMeans(n_clusters=4)
+
+#Granaciòn de los datos aleatorio para el clùster
+np.random.seed(7)
+x1 = np.random.standard_normal((100,2))*0.6+np.ones((100,2))
+x2 = np.random.standard_normal((100,2))*0.5-np.ones((100,2))
+x3 = np.random.standard_normal((100,2))*0.4-2*np.ones((100,2))+5
+X = np.concatenate((x1,x2,x3),axis=0)
+
+plt.plot(X[:,0],X[:,1], 'k,')
+plt.show()
+
+#Agrupacion de los puntos 
+n = 3
+k_means = KMeans(n_clusters=n)
+k_means.fit(X)
+
+
+centroides = k_means.cluster_centers_
+etiquetas = k_means.labels_
+
+# Graficamos los puntos del clùster.
+plt.plot(X[etiquetas==0,0],X[etiquetas==0,1],'r.', label='punto 1')
+plt.plot(X[etiquetas==1,0],X[etiquetas==1,1],'b.', label='punto 2')
+plt.plot(X[etiquetas==2,0],X[etiquetas==2,1],'g.', label='punto 3')
+
+plt.plot(centroides[:,0],centroides[:,1],'mo',markersize=8, label='centroides')
+
+plt.legend(loc='best')
+plt.show()
+
+
+/**** modelo de hierarchica  ****/
+
+
+
+/*** modelo silhouette  ***/
+
