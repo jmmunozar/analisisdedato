@@ -47,7 +47,45 @@ plt.show()
 
 /**** modelo de hierarchica  ****/
 
+# clustering Jerárquico( Jerarquia de clusters)
+# importacion de librerias
+# Imprimos los ingresos anuelaes y la puntacion de los gastos del cliente
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+dataset = pd.read_csv('Mall_Customers.csv')
+dataset
+d = dataset.iloc[:, [3,4]].values
+# creamos el dandograma.
+import scipy.cluster.hierarchy as sch
+dendrogram = sch.dendrogram(sch.linkage(d, method = 'ward'))
+plt.title('Dendograma Hierarchical Clustering')
+plt.xlabel('cliente')
+plt.ylabel('distancia')
+plt.show()
+/** Ajuste al conjunto de datos ***/
+# Ajustando Clustering Jerárquico al conjunto de datos
+from sklearn.cluster import AgglomerativeClustering
+hc = AgglomerativeClustering(n_clusters = 5, 
+                    metric = 'euclidean', 
+                    linkage = 'ward')
 
+y_hc = hc.fit_predict(d)
+
+/*** Puntos de Predicciòn***/
+# Visualising the clusters
+plt.scatter(d[y_hc == 0, 0], d[y_hc == 0, 1], s = 100, c = 'red', label = 'Grupo 1')
+plt.scatter(d[y_hc == 1, 0], d[y_hc == 1, 1], s = 100, c = 'blue', label = 'Grupo 2')
+plt.scatter(d[y_hc == 2, 0], d[y_hc == 2, 1], s = 100, c = 'green', label = 'Grupo 3')
+plt.scatter(d[y_hc == 3, 0], d[y_hc == 3, 1], s = 100, c = 'cyan', label = 'Grupo4')
+plt.scatter(d[y_hc == 4, 0], d[y_hc == 4, 1], s = 100, c = 'orange', label = 'Grupo 5')
+plt.title('Clientes')
+plt.xlabel('Ingresos Anueles(k$)')
+plt.ylabel('Puntuacion de Gastos (1-100)')
+plt.legend()
+plt.show()
 
 /*** modelo silhouette  ***/
+
+
 
