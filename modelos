@@ -85,7 +85,27 @@ plt.ylabel('Puntuacion de Gastos (1-100)')
 plt.legend()
 plt.show()
 
-/*** modelo silhouette  ***/
+/*** Codigo del Analisis explotario  ***/
+# importamos el dataset
+import pandas as pd
+dataset = pd.read_csv('Mall_Customers.csv')
+dataset
+
+# Analizar la informacion del dataset.
+dataset.describe()
+
+# Cuantos registros tenemos en Annual Income(K$)
+print(dataset.groupby('Annual Income (k$)').size())
+
+# informacion del dataset.
+dataset.info()
+
+# Numero de filas y columnas del dataset
+
+print('Cantidad de Filas y columnas:',dataset.shape)
+print('Nombre columnas:',dataset.columns)
+
+/** Preprocesar los datos **/
 
 
 
