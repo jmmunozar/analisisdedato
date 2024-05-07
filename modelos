@@ -106,6 +106,25 @@ print('Cantidad de Filas y columnas:',dataset.shape)
 print('Nombre columnas:',dataset.columns)
 
 /** Preprocesar los datos **/
+#Dimensiones del Dataframe utilizado.
+import numpy as np
+print("Numero de filas: " + str(dataset.shape[0]))
+print("Numero de columnas: " + str(dataset.shape[1]),'\n')
+print('Tipo de variables:','\n', dataset.dtypes)
+print('Ids únicos:', len(np.unique(dataset.CustomerID)))
 
+# Nombre de las variables orfiginales del dataset.
+dataset.columns
+
+# Renombrar el nombre de las variables.
+dataset.columns = ['CustomerID', 'Gender', 'Age', 'AnnualIncome','SpendingScore']
+dataset.columns
+
+# crean la lista de las variables segun el tipo de datos
+string = ['Gender']
+numeric = ['Age', 'AnnualIncome', 'SpendingScore']
+
+# Analsisi de las variables descriptivo
+dataset[numeric].describe()
 
 
